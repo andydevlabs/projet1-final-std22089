@@ -9,18 +9,14 @@ public class AffirmationProcessor {
     private static final Affirmation louEstGeneroux = new BasicAffirmation("Lou est généreux");
 
     public static void process(String input) {
-        // Split the input into individual affirmations
         String[] affirmations = input.split("\\.");
 
-        // List to store the parsed BasicAffirmation objects
         List<Affirmation> affirmationList = new ArrayList<>();
 
-        // Flag to track the keyword in the input
         String keyword = "";
 
-        // Iterate through each affirmation
         for (String affirmation : affirmations) {
-            affirmation = affirmation.trim(); // Remove leading and trailing spaces
+            affirmation = affirmation.trim();
 
             if (affirmation.contains(" ou ")) {
                 keyword = " ou ";
@@ -45,7 +41,6 @@ public class AffirmationProcessor {
             }
         }
 
-        // Determine the outcome based on the keyword
         String result;
         switch (keyword) {
             case " ou ":
@@ -58,7 +53,6 @@ public class AffirmationProcessor {
                 result = AffirmationChecker.et(affirmationList);
                 break;
             default:
-                // Default to 'et' if no keyword is found
                 result = AffirmationChecker.et(affirmationList);
                 break;
         }
@@ -76,14 +70,12 @@ public class AffirmationProcessor {
     }
 
     public static void main(String[] args) {
-        // Test inputs
         String input1 = "Lou est beau ou Lou est généreux. Donc Lou est pauvre.";
         String input2 = "Lou est beau ou Lou est généreux";
         String input3 = "Lou est pauvre. Donc Lou est généreux.";
 
-        // Process the test inputs
-        process(input1); // Expected output: "false"
-        process(input2); // Expected output: "true"
-        process(input3); // Expected output: "false"
+        process(input1);
+        process(input2);
+        process(input3);
     }
 }
